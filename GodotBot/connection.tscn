@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://c5e21b3u3r7cj"]
+
+[ext_resource type="Script" path="res://Connection.gd" id="1_75l2u"]
+[ext_resource type="Script" path="res://WebSocketClient.gd" id="2_tjubj"]
+
+[node name="Connection" type="Node"]
+script = ExtResource("1_75l2u")
+
+[node name="WebSocketClient" type="Node" parent="."]
+script = ExtResource("2_tjubj")
+
+[connection signal="connected_to_server" from="WebSocketClient" to="." method="_on_websocket_client_connected"]
+[connection signal="connection_closed" from="WebSocketClient" to="." method="_on_websocket_client_close"]
+[connection signal="message_received" from="WebSocketClient" to="." method="_on_message_recieved"]
